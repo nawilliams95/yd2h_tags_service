@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :update, :destroy]
+  before_action :check_tag_exists, only: [:create]
 
   # GET /tags
   def index
@@ -48,4 +49,11 @@ class TagsController < ApplicationController
     def tag_params
       params.require(:tag).permit(:name, :post_id)
     end
+    
+    def check_tag_exists
+      @tag = Tag.find_by_name(self.name)
+      if @tag != nil
+        self.post_id.push(:post_id)
+      end
+   end
 end
