@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Tag.create([
+    {name: 'test', post_id: [1, 2, 4]},
+    {name: 'fun', post_id: [1]},
+    {name: 'life', post_id: [1, 2, 5]}
+])
+
+puts 'Seeded database'
