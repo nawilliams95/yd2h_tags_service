@@ -17,7 +17,7 @@ class TagsController < ApplicationController
   # POST /tags
   def create
     @tag = Tag.new(tag_params)
-
+  
     if @tag.save
       render json: @tag, status: :created, location: @tag
     else
@@ -37,6 +37,12 @@ class TagsController < ApplicationController
   # DELETE /tags/1
   def destroy
     @tag.destroy
+  end
+
+  #Get tags by name
+  def nameindex
+    @tag = Tag.where('name = ?', params[:name] )
+    render json: { status: 200, tag: @tag}
   end
 
   private
