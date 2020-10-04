@@ -42,7 +42,7 @@ class TagsController < ApplicationController
   #Get tags by name
   def nameindex
     @tag = Tag.where('name = ?', params[:name] )
-    render json: { status: 200, tag: @tag}
+    render json: @tag
   end
 
   private
